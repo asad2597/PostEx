@@ -1,0 +1,62 @@
+@tailwind components;
+.my-form-field .mat-form-field-wrapper{
+  margin-bottom: -1.25em !important;
+  padding-bottom: -1.34375em !important;
+}
+@layer components {
+
+    
+    //styles for nav right side icons....
+    .btn-icon {
+      @apply w-8 h-8 rounded-full pt-0.5 text-slate-800 bg-light-1 border border-light-2 hover:border-0 hover:bg-green-1 hover:text-slate-800 focus:bg-green-1;
+
+    }
+    //styles for toggle button icon....
+    .btn-icon-small {
+      @apply w-6 h-6 rounded-full text-sm pt-0.5 ml-16 mt-1 text-slate-800 bg-light-1 border border-light-2 hover:border-0 hover:bg-green-1 hover:text-slate-800;
+  
+    }
+    //styles for mat-list-items....
+    .nav-list-item{
+      @apply flex font-medium text-xs cursor-pointer items-center text-slate-800 hover:text-green-2;
+    }
+    //changing color of indicator arrow sidebar links....
+    ::ng-deep.indicator>.mat-expansion-indicator:after {
+      @apply border-slate-400;
+    }
+    ::ng-deep.mat-expanded.indicator>.mat-expansion-indicator:after {
+      @apply border-green-2;
+    }
+    ::ng-deep.mat-expansion-panel-header.mat-expanded {
+      @apply  [&_a]:text-green-2;
+    }
+    .mat-expansion-indicator:after{
+      @apply border-red-600;
+    }
+    //expansion panel header text-color-hover
+    mat-expansion-panel-header:hover{
+      background-color: white !important; 
+      @apply  [&_a]:text-green-2;
+    }
+}
+
+
+
+//sidenav scrollbar style........
+::ng-deep.mat-drawer-inner-container::-webkit-scrollbar {
+  visibility: hidden;
+  width: 6px;
+}
+
+::ng-deep.mat-drawer-inner-container::-webkit-scrollbar-track{
+  background: transparent;
+}
+
+::ng-deep.mat-drawer-inner-container::-webkit-scrollbar-thumb{
+  visibility: hidden;
+  background-color: #dddada;
+  border-radius: 20px;
+}
+::ng-deep.mat-drawer-inner-container:hover::-webkit-scrollbar-thumb{
+  visibility: visible;
+}

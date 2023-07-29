@@ -1,0 +1,106 @@
+    <!-- Top Nav -->
+    <mat-toolbar class="!bg-white">
+        <div class="flex flex-row w-full justify-between">
+            <div class="flex flex-row gap-x-6 w-1/2">
+                <span class="font-black text-3xl">Post<span class="text-green-700">Ex.</span></span>
+                <button mat-icon-button class="btn-icon-small" (click)="toggleSidenav()">
+                    <mat-icon class="text-sm font-bold">{{arrow}}</mat-icon>
+                </button>
+                <!-- <form class=" bg-red-400 w-96 h-12">
+                    <mat-form-field class="my-form-field bg-blue-500  w-full !h-10 !mb-[-1.25em]">
+                        <input matInput placeholder="Search" class="bg-light-2">
+                         <button mat-icon-button >
+                            <mat-icon class="material-symbols-outlined">close</mat-icon>
+                            <span>&#124;</span>
+                            <mat-icon class="material-symbols-outlined">search</mat-icon>
+                        </button> 
+                    </mat-form-field> 
+                   
+                </form> -->
+                
+            </div>
+            <!--  -->
+            <div class="flex flex-row gap-x-6 mr-4 xs:mr-2 lg:mr-12">
+                <button mat-icon-button class="btn-icon">
+                    <mat-icon class="text-lg">zoom_out_map</mat-icon>
+                </button>
+                <button mat-icon-button class="btn-icon" >
+                    <mat-icon class="text-lg">notifications_none</mat-icon>
+                </button>
+                <button mat-icon-button class="btn-icon" >
+                    <mat-icon class="text-lg">format_align_right</mat-icon>
+                </button>
+            </div>
+        </div>
+    </mat-toolbar>
+
+    <!-- Sidenav -->
+    <mat-sidenav-container class="h-full mt-0.5">
+       
+        <mat-sidenav #sidenav mode="side" opened [disableClose]="true" class="bg-white w-60 scrollwrap">
+            
+            <!-- User Info -->
+            <div class="flex flex-col mx-auto mt-2 mb-12 items-center text-center w-52 text-slate-600">
+                
+                    <img src="../../assets/images/user.jpg" alt="" class="h-36 border-2 rounded-full border-light-2">
+                    <div class="my-2">
+                        <span>User Name</span><br>
+                        <span class="text-xs">useremial@something.com</span>
+                    </div>
+                    <div class="flex flex-row justify-center gap-4">
+                        <mat-icon class="material-symbols-outlined hover:text-green-2">calendar_month</mat-icon>
+                        <mat-icon class="material-symbols-outlined hover:text-green-2">description</mat-icon>
+                        <mat-icon class="material-symbols-outlined hover:text-green-2">download</mat-icon>
+                    </div>       
+            </div>
+            
+            <!-- Sidenav Links -->
+            
+            <mat-list class="flex flex-col">
+                <span class="ml-4 text-xs font-semibold text-slate-600 tracking-widest">BASIC</span>
+                <div *ngFor="let item of navItems; let i=index">
+                    
+                    <!-- If no nested links available -->
+                    <mat-list-item  *ngIf="!item.items" class="!pl-2" (click)="togglePanels(i)">
+                        <a class="nav-list-item !pl-0 gap-x-2" 
+                            [routerLink]="item.routerLink" routerLinkActive="!text-green-2">
+                            <mat-icon class="material-symbols-outlined">{{item.icon}}</mat-icon>
+                            <span>{{item.label}}</span>
+                        </a>
+                    </mat-list-item>
+                    
+                    <!-- If nested links available -->
+                    <mat-expansion-panel [class.mat-elevation-z0]="true" *ngIf="item.items" 
+                        [expanded]="indexExpanded==i">
+                        
+                        <!-- submenu header -->
+                        <mat-expansion-panel-header class="indicator !pl-2" (click)="togglePanels(i)" >
+                            <mat-panel-title>
+                                <a class="nav-list-item gap-x-2">
+                                    <mat-icon class="material-symbols-outlined ">{{item.icon}}</mat-icon>
+                                    <span>{{item.label}}</span>
+                                </a>
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+
+                        <!-- submenu list -->
+                        <mat-list *ngFor="let data of item.items">
+                            <mat-list-item class="!h-4 !pl-0 hover:[&_a]:text-green-2" >
+                                <a class="nav-list-item" [routerLink]="data.routerLink">
+                                    <mat-icon class="pl-1 pt-1 material-symbols-outlined text-xs">{{data.icon}}</mat-icon>
+                                    <span>{{data.label}}</span>
+                                </a>
+                                
+                            </mat-list-item>
+                        </mat-list>
+                    </mat-expansion-panel> 
+                </div>
+            </mat-list>
+        </mat-sidenav>
+
+        <!-- Content Area -->
+        <mat-sidenav-content class="bg-light-2">
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+
+    </mat-sidenav-container>
