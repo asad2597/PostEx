@@ -9,19 +9,15 @@ import { MatInputModule} from '@angular/material/input';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatListModule} from '@angular/material/list';
 import { MatExpansionModule} from '@angular/material/expansion';
-import { MatGridListModule} from '@angular/material/grid-list';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './pages/home/home.component';
 import { AdminComponent } from './admin/admin.component';
-import { ManageOrdersComponent } from './pages/manage-orders/manage-orders.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    AdminComponent,
-    ManageOrdersComponent
+    AdminComponent
+         
   ],
   imports: [
     BrowserModule,
@@ -33,8 +29,7 @@ import { ManageOrdersComponent } from './pages/manage-orders/manage-orders.compo
     MatIconModule,
     MatFormFieldModule,
     MatListModule,
-    MatExpansionModule,
-    MatGridListModule
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

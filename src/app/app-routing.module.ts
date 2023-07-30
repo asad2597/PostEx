@@ -1,24 +1,33 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
-import { ManageOrdersComponent } from './pages/manage-orders/manage-orders.component';
+
+import { AdminComponent } from './admin/admin.component';
+import { HomeComponent } from './admin/pages/home/home.component';
+import { DashboardComponent } from './admin/pages/dashboard/dashboard.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent
-  },
-  {
-    path: 'home',
-    component: HomeComponent
-  },
-  {
-    path: 'dashboard',
-    component: HomeComponent
-  },
-  {
-    path: 'manage-orders',
-    component: ManageOrdersComponent
+    component: AdminComponent,
+    children: [
+      {
+        path: '',
+        component: HomeComponent
+      },
+      {
+        path: 'home',
+        component: HomeComponent
+      },
+      {
+        path: 'dashboard',
+        component: DashboardComponent
+      },
+      {
+        path: 'order-management',
+        loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+        //component: CreateOrderComponent
+      }
+    ]
   }
 ];
 

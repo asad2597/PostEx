@@ -15,7 +15,7 @@ export const SideNavItems = [
         icon: 'shopping_cart',
         items: [
             {
-                routerLink: 'create-order',
+                routerLink: 'order-management/create-order',
                 label: 'Create Order',
                 icon: 'circle'
             },
